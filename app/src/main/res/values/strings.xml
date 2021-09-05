@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My File App</string>
+    <string name="add_file_button">Add File Button</string>
+    <string name="not_granted">Need Permission!</string>
+    <string name="choose_file_type">Choose File Type</string>
+    <string name="set_title">Set Title</string>
+    <string name="save">Save</string>
+    <string name="image_preview">Image Preview</string>
+    <string name="add_file">Add File</string>
+    <string name="btn_play">btn_play</string>
+</resources>
