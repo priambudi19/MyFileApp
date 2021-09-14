@@ -9,5 +9,6 @@ abstract class MyDatabase : RoomDatabase() {
     abstract fun dao() : MyDao
     companion object{
         const val TB_NAME = "tb_myfileapp"
+        const val DB_NAME = "myfileapp.db"
     }
 }

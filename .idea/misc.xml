@@ -3,9 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Priambudi/AndroidStudioProjects/MyFileApp/app/src/main/res/drawable/ic_add.xml" value="0.22205128205128205" />
+        <entry key="..\:/Users/Priambudi/AndroidStudioProjects/MyFileApp/app/src/main/res/drawable/ic_attachment.xml" value="0.22205128205128205" />
+        <entry key="..\:/Users/Priambudi/AndroidStudioProjects/MyFileApp/app/src/main/res/drawable/ic_baseline_play_circle_outline_24.xml" value="0.22205128205128205" />
+        <entry key="..\:/Users/Priambudi/AndroidStudioProjects/MyFileApp/app/src/main/res/drawable/ic_photo.xml" value="0.22205128205128205" />
+        <entry key="..\:/Users/Priambudi/AndroidStudioProjects/MyFileApp/app/src/main/res/drawable/ic_thumbnail.xml" value="0.22205128205128205" />
+        <entry key="..\:/Users/Priambudi/AndroidStudioProjects/MyFileApp/app/src/main/res/drawable/ic_video.xml" value="0.22205128205128205" />
         <entry key="..\:/Users/Priambudi/AndroidStudioProjects/MyFileApp/app/src/main/res/layout/activity_add_file.xml" value="0.18" />
+        <entry key="..\:/Users/Priambudi/AndroidStudioProjects/MyFileApp/app/src/main/res/layout/activity_detail.xml" value="0.22" />
         <entry key="..\:/Users/Priambudi/AndroidStudioProjects/MyFileApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/Priambudi/AndroidStudioProjects/MyFileApp/app/src/main/res/layout/item_row.xml" value="0.22" />
+        <entry key="..\:/Users/Priambudi/AndroidStudioProjects/MyFileApp/app/src/main/res/layout/item_row.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -1,12 +1,9 @@
 package com.priambudi19.myfileapp.ui.main
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import com.priambudi19.myfileapp.data.repo.MainRepository
 
-class MainViewModel : ViewModel() {
-    private val _isGranted = MutableLiveData(false)
-    val isGranted: LiveData<Boolean> get() = _isGranted
-
-    fun grantPermission() = _isGranted.postValue(true)
+class MainViewModel(private val repo: MainRepository) : ViewModel() {
+  fun getListFile() = repo.getListFile().asLiveData()
 }

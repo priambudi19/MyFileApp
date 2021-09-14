@@ -8,4 +8,5 @@
     <string name="image_preview">Image Preview</string>
     <string name="add_file">Add File</string>
     <string name="btn_play">btn_play</string>
+    <string name="file_lost">File moved or deleted on storage</string>
 </resources>

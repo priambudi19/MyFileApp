@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.add.AddFileActivity">
-
+    tools:context=".ui.detail.DetailActivity">
     <ImageView
         android:id="@+id/iv_preview"
         android:layout_width="0dp"
@@ -36,7 +35,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:hint="@string/set_title"
+        android:hint="Title"
         app:expandedHintEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +44,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_title"
             android:maxLines="1"
+            android:enabled="false"
+            android:inputType="text"
             android:maxLength="80"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -59,7 +60,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:hint="Set Description"
+        android:hint="Description"
         app:expandedHintEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,6 +70,7 @@
             android:id="@+id/input_desc"
             android:layout_width="match_parent"
             android:minHeight="80dp"
+            android:enabled="false"
             android:layout_height="wrap_content"
             android:maxLength="200"
             android:maxLines="1" />
@@ -76,11 +78,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_save"
+        android:id="@+id/btn_save_edit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/save"
+        android:text="Edit"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDesc" />
@@ -106,4 +108,13 @@
         app:srcCompat="@drawable/ic_baseline_play_circle_outline_24"
         android:contentDescription="@string/btn_play" />
 
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="delete"
+        android:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="@+id/btn_save_edit"
+        app:layout_constraintStart_toStartOf="@+id/btn_save_edit"
+        app:layout_constraintTop_toBottomOf="@+id/btn_save_edit" />
 </androidx.constraintlayout.widget.ConstraintLayout>
