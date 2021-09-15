@@ -12,7 +12,13 @@ import kotlinx.coroutines.launch
 class DetailViewModel(private val repo: MainRepository) : ViewModel() {
     private val _event = MutableLiveData<Event>(Event.Nothing)
     val event: LiveData<Event> get() = _event
+    private val _isEditing = MutableLiveData<Boolean>(false)
+    val isEditing : LiveData<Boolean> get() = _isEditing
 
+    fun edit(){
+        val status = isEditing.value
+        status?.let { _isEditing.postValue(!it) }
+    }
 
     fun updateDetail(vararg file : FileEntity) {
         viewModelScope.launch {

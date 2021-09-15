@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.view.View
 import androidx.core.net.toUri
+import androidx.core.widget.addTextChangedListener
 import coil.fetch.VideoFrameUriFetcher
 import coil.load
 import coil.size.Scale
@@ -15,6 +16,7 @@ import com.priambudi19.myfileapp.util.IntentConst
 import com.priambudi19.myfileapp.util.showToast
 import com.robertlevonyan.components.picker.ItemType
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.File
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
@@ -30,33 +32,69 @@ class DetailActivity : AppCompatActivity() {
         setupThumnail()
         setupData()
         setupButton()
+        setupInputListener()
         getMessage()
 
+
+    }
+
+    private fun setupInputListener() {
+        with(binding){
+            inputTitle.addTextChangedListener {
+                if (it.isNullOrBlank()){
+                    inputTitle.error = "Field is required"
+                    textInputLayout.isErrorEnabled = true
+                }else{
+                    inputTitle.error = null
+                    textInputLayout.isErrorEnabled = false
+                }
+            }
+            inputDesc.addTextChangedListener {
+                if (it.isNullOrBlank()){
+                    inputTitle.error = "Field is required"
+                    textInputLayoutDesc.isErrorEnabled = true
+                }else{
+                    inputTitle.error = null
+                    textInputLayoutDesc.isErrorEnabled = false
+                }
+            }
+        }
     }
 
     private fun setupButton() {
         with(binding) {
-            btnSaveEdit.setOnClickListener {
-                btnSaveEdit.text = "Save"
-                if (inputTitle.isEnabled) {
-                    data?.let { _data ->
-                        viewModel.updateDetail(
-                            FileEntity(
-                                _data.id,
-                                inputTitle.text.toString(),
-                                inputDesc.text.toString(),
-                                _data.uri,
-                                _data.fileName,
-                                System.currentTimeMillis(),
-                                _data.type
-                            )
-                        )
+            viewModel.isEditing.observe(this@DetailActivity, {
+                inputTitle.isEnabled = it
+                inputDesc.isEnabled = it
+                if (it) {
+                    btnSaveEdit.text = "Save"
+                    btnSaveEdit.setOnClickListener {
+                        viewModel.edit()
+                        data?.let { old ->
+                            val title = inputTitle.text.toString()
+                            val desc = inputDesc.text.toString()
+                            if (title.isNotBlank() && desc.isNotBlank()) {
+                                viewModel.updateDetail(
+                                    FileEntity(
+                                        id = old.id,
+                                        title = title,
+                                        description = desc,
+                                        uri = old.uri,
+                                        fileName = old.fileName,
+                                        date = System.currentTimeMillis(),
+                                        type = old.type
+                                    )
+                                )
+                            }
+                        }
+                    }
+                } else {
+                    btnSaveEdit.text = "Edit"
+                    btnSaveEdit.setOnClickListener {
+                        viewModel.edit()
                     }
                 }
-                inputDesc.isEnabled = !inputDesc.isEnabled
-                inputTitle.isEnabled = !inputTitle.isEnabled
-
-            }
+            })
             btnDelete.setOnClickListener { data?.let { _data -> viewModel.deleteFile(_data) } }
 
         }
@@ -106,7 +144,6 @@ class DetailActivity : AppCompatActivity() {
             when (it) {
                 is DetailViewModel.Event.EditSuccess -> {
                     showToast(it.message)
-                    binding.btnSaveEdit.text = "Edit"
                 }
                 is DetailViewModel.Event.EditError -> {
                     showToast(it.message)
